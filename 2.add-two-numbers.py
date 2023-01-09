@@ -15,8 +15,8 @@ class Solution:
         Time complexity : O(max(m, n))
         Space complexity : O(max(m, n))
         """
-        carry = 0 # 存储商，即上一次运算的进位
-        root = n = ListNode(0)
+        carry = 0
+        head = ptr = ListNode(0)
         while l1 or l2 or carry:
             v1 = v2 = 0
             if l1:
@@ -25,10 +25,13 @@ class Solution:
             if l2:
                 v2 = l2.val
                 l2 = l2.next
-            carry, val = divmod(v1+v2+carry, 10) #，返回 商和余数
-            n.next = ListNode(val)
-            n = n.next
-        return root.next
+            carry, val = divmod(v1+v2+carry, 10)
+            ptr.next = ListNode(val)
+            ptr = ptr.next
+        return head.next
+
+
+        
 
 
 

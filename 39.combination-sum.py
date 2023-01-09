@@ -3,11 +3,12 @@
 #
 # [39] Combination Sum
 #
+
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combinationSum(self, nums: List[int], target: int) -> List[List[int]]:
         res = []
-        candidates.sort()
-        self.dfs(candidates, target, 0, [], res)
+        nums.sort()
+        self.dfs(nums, target, 0, [], res)
         return res
 
     def dfs(self, nums, target, index, path, res):
@@ -18,5 +19,9 @@ class Solution:
             return 
         for i in range(index, len(nums)):
             self.dfs(nums, target-nums[i], i, path+[nums[i]], res)
+
+
+
+
 
 

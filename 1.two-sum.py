@@ -16,3 +16,6 @@ class Solution:
             else:
                 return d[item], i
         return -1, -1
+
+
+

@@ -4,27 +4,23 @@
 # [16] 3Sum Closest
 #
 class Solution:
-    def threeSumClosest(self, num: List[int], target: int) -> int:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
         """
         no duplicate
         """
-        num.sort()
-        result = num[0] + num[1] + num[2]
-        for i in range(len(num) - 2):
-            j, k = i+1, len(num) - 1
-            while j < k:
-                sum = num[i] + num[j] + num[k]
-                if sum == target:
-                    return sum
-                #更新res
-                if abs(sum - target) < abs(result - target):
-                    result = sum
-                
-                if sum < target:
-                    j += 1
-                    
-                elif sum > target:
-                    k -= 1
-            
-        return result
+        nums.sort()
+        res = nums[0] + nums[1] + nums[2]
+        for i in range(len(nums)-2):
+            l, r = i+1, len(nums)-1
+            while l<r:
+                s = nums[l] + nums[r] + nums[i]
+                if s == target:
+                    return s 
+                if abs(s-target) < abs(res-target):
+                    res = s 
+                if s < target:
+                    l += 1
+                else:
+                    r -= 1
+        return res 
 

@@ -10,11 +10,16 @@ class Solution:
         Space complexity : O(1)
         """
         i = 0
-        n = len(nums)
-        while i<n:
+        n = len(nums)-1
+        while i<=n:
             if nums[i] == val:
-                nums[i] = nums[n-1]
+                nums[i] = nums[n]
                 n -= 1
             else:
                 i += 1
         return i
+
+
+
+    
+

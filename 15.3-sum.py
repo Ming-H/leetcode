@@ -7,6 +7,7 @@ class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         """
         duplicate 
+        字节
         """
         res = []
         nums.sort()
@@ -29,4 +30,6 @@ class Solution:
                     l += 1
                     r -= 1
         return res
+
+
 

@@ -20,7 +20,5 @@ class Solution:
                 maxlen = max(maxlen, i-start+1)
             usedchar[item] = i
         return maxlen
-            
-
        
 

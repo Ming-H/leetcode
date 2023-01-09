@@ -4,29 +4,30 @@
 # [42] Trapping Rain Water
 #
 class Solution:
-    def trap(self, height: List[int]) -> int:
+    def trap(self, nums: List[int]) -> int:
         """
         Time complexity: O(n)
         Space complexity: O(1)
         """
-        if not height or len(height) < 3:
-            return 0
-        volume = 0
-        left, right = 0, len(height) - 1
-        l_max, r_max = height[left], height[right]
+        if not nums or len(nums)<3:
+            return 0 
+        res = 0
+        left, right = 0, len(nums)-1
+        l_max, r_max = nums[left], nums[right]
         while left <= right:
-            if height[left] < height[right]:
-                if height[left] > l_max:
-                    l_max = height[left]
+            if nums[left] < nums[right]:
+                if nums[left] > l_max:
+                    l_max = nums[left]
                 else:
-                    volume += l_max - height[left]
+                    res += l_max - nums[left]
                 left += 1
             else:
-                if height[right] > r_max:
-                    r_max = height[right]
+                if nums[right] > r_max:
+                    r_max = nums[right]
                 else:
-                    volume += r_max - height[right]
+                    res += r_max - nums[right]
                 right -= 1
-        return volume
+        return res 
+
         
 

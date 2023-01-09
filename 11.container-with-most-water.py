@@ -4,21 +4,20 @@
 # [11] Container With Most Water
 #
 class Solution:
-    def maxArea(self, height: List[int]) -> int:
+    def maxArea(self, nums: List[int]) -> int:
         """
         Time complexity : O(n)
         Space complexity : O(1)
         """
-        maxarea = 0
-        l = 0
-        r = len(height)-1
+        res = 0
+        l, r = 0, len(nums)-1
         while l<=r:
-            maxarea = max(maxarea, min(height[l], height[r]) * (r-l))
-
-            if height[l] < height[r]:
+            res = max(res, min(nums[l], nums[r])*(r-l))
+            if nums[l] < nums[r]:
                 l += 1
             else:
                 r -= 1
-        return maxarea
+        return res 
+
 
 

@@ -37,3 +37,6 @@ class Solution:
                 if i == 0 or i > 0 and nums[i-1] != nums[i]:  # recursively reduce N
                     self.findNsum(nums[i+1:], target-nums[i], N-1, result+[nums[i]], results)
         return
+
+
+

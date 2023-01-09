@@ -20,5 +20,7 @@ class Solution:
                 return i+1
         return len(nums)+1
 
+ 
+
         
 
