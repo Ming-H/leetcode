@@ -17,9 +17,6 @@ class Solution:
         for i in range(len(matrix)):
             matrix[i] = matrix[i][::-1]
         return matrix
-            # for j in range(n//2):
-            #     row[j], row[~j] = row[~j], row[j]
 
-        
 # @lc code=end
 

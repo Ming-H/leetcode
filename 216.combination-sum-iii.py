@@ -7,18 +7,17 @@ class Solution:
     def combinationSum3(self, k: int, n: int) -> List[List[int]]:
         res = []
         nums = range(1, 10)
-        self.dfs(nums, k, 0, [], res, n)
+        self.dfs(nums, 0,  k, [], res, n)
         return res
         
-    def dfs(self, nums, k, index, path, res, target):
-        # edge case
+    def dfs(self, nums, index, k, path, res, target):
         if k < 0 or target < 0:
             return
-        # when reaching the end
         if k == 0 and target == 0:
             res.append(path)
             return
         for i in range(index, len(nums)):
             self.dfs(nums, k-1, i+1, path+[nums[i]], res, target-nums[i])
+
 
 

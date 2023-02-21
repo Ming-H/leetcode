@@ -11,11 +11,11 @@ class Solution:
         self.dfs(0, n, k, [], res)
         return res
 
-    def dfs(self, i, n, k, path, res):
+    def dfs(self, index, n, k, path, res):
         if k==0:
             res.append(path)
             return
-        for i in range(i+1, n+1):
+        for i in range(index+1, n+1):
             self.dfs(i, n, k-1, path+[i], res)
 
 

@@ -30,6 +30,7 @@ class Solution:
             self.connect(root.left)
             self.connect(root.right)
         return root
+
         """
         用两个指针 start 和 cur，其中 start 标记每一层的起始节点，
         cur 用来遍历该层的节点

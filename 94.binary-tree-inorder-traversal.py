@@ -12,17 +12,45 @@
 
 class Solution:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
-        res, stack = [], []
-        while True:
-            while root:
-                stack.append(root)
-                root = root.left
-            if not stack:
-                return res
-            node = stack.pop()
-            res.append(node.val)
-            root = node.right
+        res = []
+        self.helper(root, res)
+        return res 
+    def helper(self, root, res):
+        if root:
+            self.helper(root.left, res)
+            res.append(root.val)
+            self.helper(root.right, res)
         
+    def inorderTraversal2(self, root):
+        res, stack = [], []
+        while stack or root:
+            if root:
+                stack.append(root)
+                root = root.left 
+            else:
+                tmp = stack.pop()
+                res.append(tmp.val)
+                root = tmp.right
+        return res 
+        
+        # res = []
+        # cur = root
+        # pre = TreeNode()
+        # while cur:
+        #     if not cur.left:
+        #         res.append(cur.val)
+        #         cur = cur.right
+        #     else:
+        #         pre = cur.left 
+        #         while pre.right:
+        #             pre = pre.right
+        #         pre.right = cur
+        #         tmp = cur 
+        #         cur = cur.left 
+        #         tmp.left = None
+        # return res 
+                
+ 
 
 
 

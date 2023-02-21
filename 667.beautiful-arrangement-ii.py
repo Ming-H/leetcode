@@ -8,6 +8,7 @@
 class Solution:
     def constructArray(self, n: int, k: int) -> List[int]:
         """
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         Time Complexity: O(n)
         Space Complexity: O(n) 
         """
@@ -17,7 +18,9 @@ class Solution:
                 ans.append(n-k + i//2)
             else:
                 ans.append(n - i//2)
-
         return ans
+
+
+
 # @lc code=end
 

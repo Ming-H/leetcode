@@ -3,6 +3,9 @@
 #
 # [213] House Robber II
 #
+from operator import not_
+
+
 class Solution:
     def rob(self, nums: List[int]) -> int:
         def help(nums):
@@ -16,6 +19,5 @@ class Solution:
             return nums[0]
         else:
             return max(help(nums[1:]), help(nums[:-1]))
-    
-        
+
 

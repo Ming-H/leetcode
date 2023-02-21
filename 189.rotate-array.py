@@ -10,15 +10,6 @@ class Solution:
         Time complexity : O(n)
         Space complexity : O(1)
         """
-        # def reverse(nums, start, end):
-        #     while start<end:
-        #         nums[start], nums[end] = nums[end], nums[start]
-        #         start += 1
-        #         end -= 1
-        # k %= len(nums)
-        # reverse(nums, 0, len(nums) - 1)
-        # reverse(nums, 0, k - 1)
-        # reverse(nums, k, len(nums) - 1)
         k %= len(nums)
         def reverse(subnums):
             i, j = 0, len(subnums)-1
@@ -27,10 +18,11 @@ class Solution:
                 i += 1
                 j -= 1
             return subnums
-
         nums = reverse(nums)
         nums[:k] = reverse(nums[:k])
         nums[k:] = reverse(nums[k:])
+
+
 
 
         

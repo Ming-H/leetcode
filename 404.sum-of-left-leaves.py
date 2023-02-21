@@ -11,17 +11,32 @@
 #         self.right = None
 
 class Solution:
-    def sumOfLeftLeaves(self, root: TreeNode) -> int:
-        result = 0
-        stack = [(root, False)]
-        while stack:
-            curr, is_left = stack.pop()
-            if not curr:
-                continue
-            if not curr.left and not curr.right:
-                if is_left:
-                    result += curr.val
-            else:
-                stack.append((curr.left, True))
-                stack.append((curr.right, False))
-        return result
+    def sumOfLeftLeaves(self, root: TreeNode, isleft = False) -> int:
+    #     if not root:
+    #         return 0
+    #     if not root.left and not root.right:
+    #         if isleft:
+    #             return root.val 
+    #         else:
+    #             return 0 
+    #     return self.sumOfLeftLeaves(root.left, True) + \
+    #         self.sumOfLeftLeaves(root.right, False )
+
+    # def sumOfLeftLeaves2(self, root):
+        res = 0
+        def dfs(root):
+            nonlocal res
+            if root:
+                if root.left and not root.left.left and not root.left.right:
+                    res += root.left.val
+                dfs(root.left)
+                dfs(root.right)
+        dfs(root)
+        return res
+
+
+
+
+
+
+

@@ -11,6 +11,7 @@
 
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
+        # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         pre = None
         slow = fast = head
         while fast and fast.next:
@@ -22,6 +23,9 @@ class Solution:
             slow = slow.next
             pre = pre.next
         return not pre
+
+
+
 
         
 

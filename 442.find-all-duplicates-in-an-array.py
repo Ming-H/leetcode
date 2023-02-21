@@ -13,3 +13,6 @@ class Solution:
             else:
                 nums[index] *= -1
         return res
+
+
+    

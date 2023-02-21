@@ -19,6 +19,8 @@ class Solution:
             stack.append(i)            
         return res
 
+
+
         # nums.insert(0, nums[-1])
         # stack = []
         # dic = {}

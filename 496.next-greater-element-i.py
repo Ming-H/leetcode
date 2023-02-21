@@ -7,20 +7,20 @@
 # @lc code=start
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        stack = []
-        dic = {}
-        for num in nums2:
-            while stack != [] and num > stack[-1]:
-                dic[stack.pop()] = num
-            stack.append(num)
-
-        res = []
-        for num in nums1:
-            if num in dic.keys():
-                res.append(dic[num])
+        stack, res  = [], []
+        d = {}
+        for item in nums2:
+            while stack and item>stack[-1]:
+                d[stack.pop()] = item 
+            stack.append(item)
+        for item in nums1:
+            if item in d:
+                res.append(d[item])
             else:
                 res.append(-1)
+        return res 
 
-        return res
+
+
 # @lc code=end
 

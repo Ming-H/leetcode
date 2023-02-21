@@ -23,5 +23,21 @@ class Solution:
                         and isSym(L.right, R.left)
             return False
         return isSym(root, root)
-    
+
+
+
+    def isSymmetric(self, root):
+        if not root:
+            return True 
+        def func(p, q):
+            if not p and not q:
+                return True 
+            if not p or not q:
+                return False
+            if p.val == q.val:
+                return func(p.left, q.right) and \
+                    func(p.right, q.left)
+            return False
+        return func(root.left, root.right)
+
 

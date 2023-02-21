@@ -11,21 +11,22 @@ class Solution:
         :type matrix: List[List[int]]
         :type target: int
         :rtype: bool
-        O(m * logn)
+        O(n * logn)
         """
         if not matrix:
             return False
-        depth = len(matrix)
-        width = len(matrix[0])
-        row, col = depth - 1, 0
-        while row >= 0 and col < width:
-            if matrix[row][col] == target:
+        m, n = len(matrix), len(matrix[0])
+        i, j = m-1, 0
+        while i>=0 and j<n:
+            if matrix[i][j] ==target:
                 return True
-            elif matrix[row][col] > target:
-                row -= 1
+            elif matrix[i][j] > target:
+                i -= 1
             else:
-                col += 1
+                j += 1
         return False
+
+
 
         
 # @lc code=end

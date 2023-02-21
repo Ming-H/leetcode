@@ -7,6 +7,9 @@
 # @lc code=start
 class Solution:
     def lexicalOrder(self, n: int) -> List[int]:
+        """
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        """
         def dfs(i):
             if i <= n:
                 result.append(i)
@@ -16,6 +19,8 @@ class Solution:
         for i in range(1, 10):
             dfs(i)
         return result
+
+
 
 
 

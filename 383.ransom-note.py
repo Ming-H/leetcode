@@ -8,18 +8,19 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
         if len(ransomNote) > len(magazine):
-            return False
-        letters = {}
-        for c in magazine:
-            letters[c] = letters[c] + 1 if c in letters else 1
-        for c in ransomNote:
-            if c not in letters:
-                return False
+            return False 
+        d = {}
+        for item in magazine:
+            d[item] = d.get(item, 0) + 1
+        for item in ransomNote:
+            if item not in d:
+                return False 
             else:
-                if letters[c] == 0:
-                    return False
-                letters[c] -= 1
-        return True
+                if d[item] == 0:
+                    return False 
+                else:
+                    d[item] -= 1
+        return True 
 
 
 

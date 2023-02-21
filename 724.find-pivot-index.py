@@ -5,6 +5,8 @@
 #
 
 # @lc code=start
+
+
 class Solution:
     def pivotIndex(self, nums: List[int]) -> int:
         """
@@ -18,6 +20,8 @@ class Solution:
                 return i
             leftsum += x
         return -1
+
+
         
 # @lc code=end
 

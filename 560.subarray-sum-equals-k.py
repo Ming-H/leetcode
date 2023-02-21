@@ -21,6 +21,9 @@ class Solution:
                 count += d[Sum-k]
             d[Sum] = d.get(Sum, 0) + 1
         return count
+            
+
+
 
         
 # @lc code=end

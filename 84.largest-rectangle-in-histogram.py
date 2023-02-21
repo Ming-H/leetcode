@@ -4,7 +4,7 @@
 # [84] Largest Rectangle in Histogram
 #
 class Solution:
-    def largestRectangleArea(self, heights: List[int]) -> int:
+    def largestRectangleArea(self, nums: List[int]) -> int:
         """
         The stack maintain the indexes of buildings with ascending height.
         Before adding a new building, pop the building who is taller than 
@@ -28,17 +28,17 @@ class Solution:
         栈顶元素为止，再次进栈
         
         """
-        heights.append(0)
+        nums.append(0)
         stack = [-1]
-        ans = 0
-        for i in range(len(heights)):
-            while heights[i] < heights[stack[-1]]: 
-                # 当前元素小于上一个元素
-                h = heights[stack.pop()]
-                w = i - stack[-1] - 1
-                ans = max(ans, h * w)
+        res = 0
+        for i in range(len(nums)):
+            while nums[i] < nums[stack[-1]]:
+                h = nums[stack.pop()]
+                w = i-stack[-1]-1
+                res = max(res, w*h)
             stack.append(i)
-        # heights.pop()
-        return ans
+        return res 
+
+
             
 

@@ -17,4 +17,3 @@ class Solution:
         return max(nums) if float('-inf') in v else v[2]
 
 
-

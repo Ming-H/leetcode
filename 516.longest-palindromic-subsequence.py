@@ -7,6 +7,9 @@
 # @lc code=start
 class Solution:
     def longestPalindromeSubseq(self, s: str) -> int:
+        """
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        """
         # d = {}
         # def f(s):
         #     if s not in d:
@@ -28,6 +31,7 @@ class Solution:
                 else:
                     dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])
         return dp[0][n-1]
+
 
 
 # @lc code=end

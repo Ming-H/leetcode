@@ -11,15 +11,19 @@ class Solution:
         Time Complexity: O(R*C)
         Space complexity: O(R*C)
         """
-        seen = set()
-        def area(r, c):
-            if not (0 <= r < len(grid) and 0 <= c < len(grid[0])
-                    and (r, c) not in seen and grid[r][c]):
-                return 0
-            seen.add((r, c))
-            return (1 + area(r+1, c) + area(r-1, c) + area(r, c-1) + area(r, c+1))
+        res = 0
+        m, n = len(grid), len(grid[0])
+        def func(i, j):
+            if i<0 or j<0 or i>=m or j>=n or grid[i][j]==0:
+                return 0 
+            grid[i][j] = 0
+            return 1 + func(i-1, j) + func(i, j-1) + func(i+1, j) + func(i, j+1)
+        for i, j in product(range(m), range(n)):
+            if grid[i][j]:
+                res = max(res, func(i, j))
+        return res 
 
-        return max(area(r, c) for r in range(len(grid)) for c in range(len(grid[0])))
-        
+
+
 # @lc code=end
 

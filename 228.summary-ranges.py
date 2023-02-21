@@ -5,12 +5,12 @@
 #
 class Solution:
     def summaryRanges(self, nums: List[int]) -> List[str]:
-        ranges = []
+        res = []
         for item in nums:
-            if not ranges or item > ranges[-1][-1] + 1:
-                ranges.append([])
-            ranges[-1][1:] = item,
-        return ['->'.join(map(str, r)) for r in ranges]
+            if not res or item>res[-1][-1]+1:
+                res.append([])
+            res[-1][1:] = item,
+        return ['->'.join(map(str, r)) for r in res]
 
-        
+
 

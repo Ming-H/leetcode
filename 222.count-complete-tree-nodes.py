@@ -12,6 +12,9 @@
 
 class Solution:
     def countNodes(self, root: TreeNode) -> int:
+        """
+        O(logN*logN)
+        """
         if not root:
             return 0
         leftDepth = self.getDepth(root.left)
@@ -25,5 +28,9 @@ class Solution:
         if not root:
             return 0
         return 1 + self.getDepth(root.left)
+
+
+
+
     
 

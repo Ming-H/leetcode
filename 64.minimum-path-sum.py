@@ -4,16 +4,17 @@
 # [64] Minimum Path Sum
 #
 class Solution:
-    def minPathSum(self, grid: List[List[int]]) -> int:
-        m = len(grid)
-        n = len(grid[0])
-        for i in range(1, n):
-            grid[0][i] += grid[0][i-1]
+    def minPathSum(self, matrix: List[List[int]]) -> int:
+        m = len(matrix)
+        n = len(matrix[0])
+        for j in range(1, n):
+            matrix[0][j] += matrix[0][j-1]
         for i in range(1, m):
-            grid[i][0] += grid[i-1][0]
+            matrix[i][0] += matrix[i-1][0]
         for i in range(1, m):
             for j in range(1, n):
-                grid[i][j] += min(grid[i-1][j], grid[i][j-1])
-        return grid[-1][-1]
+                matrix[i][j] += min(matrix[i-1][j], matrix[i][j-1])
+        return matrix[-1][-1]
+
             
 

@@ -15,22 +15,33 @@ class Node:
 """
 class Solution:
     def copyRandomList(self, head: 'Node') -> 'Node':
-        nodeDict = dict()
-        dummy = Node(0, None, None)
-        nodeDict[head] = dummy
-        newHead, pointer = dummy, head
-        while pointer:
-            node = Node(pointer.val, pointer.next, None)
-            nodeDict[pointer] = node
-            newHead.next = node
-            newHead, pointer = newHead.next, pointer.next
-        pointer = head
-        while pointer:
-            if pointer.random:
-                nodeDict[pointer].random = nodeDict[pointer.random]
-            pointer = pointer.next
-        return dummy.next
+        # O(n)/ O(1)
+        """
+        https://zhuanlan.zhihu.com/p/83785628
+        """
+        if not head:
+            return 
+        # copy nodes
+        cur = head
+        while cur:
+            nxt = cur.next
+            cur.next = Node(cur.val)
+            cur.next.next = nxt
+            cur = nxt
+        # copy random pointers
+        cur = head
+        while cur:
+            if cur.random:
+                cur.next.random = cur.random.next
+            cur = cur.next.next
+        # separate two parts
+        second = cur = head.next
+        while cur.next:
+            head.next = cur.next
+            head = head.next
+            cur.next = head.next
+            cur = cur.next
+        head.next = None
+        return second
 
-        
-# @lc code=end
-
+       

@@ -14,6 +14,9 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        """
+        根节点比左节点大，比右节点小
+        """
         if not root or not p or not q:
             return None
         if (max(p.val, q.val) < root.val):
@@ -22,5 +25,18 @@ class Solution:
             return self.lowestCommonAncestor(root.right, p, q)
         else:
             return root
+
+    def lowestCommonAncestor2(self, root, p, q):
+        while root:
+            if p.val < root.val and  q.val < root.val:
+                root = root.left
+            elif p.val > root.val and q.val > root.val:
+                root = root.right
+            else:
+                return root
+
+
+    
+
 # @lc code=end
 

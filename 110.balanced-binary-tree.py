@@ -12,6 +12,10 @@
 
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
+        """
+        O(n)
+        return the height of the current node in DFS recursion
+        """
         def check(root):
             if root is None:
                 return 0
@@ -24,4 +28,5 @@ class Solution:
             
         return check(root) != -1
         
+
 

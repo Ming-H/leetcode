@@ -24,4 +24,22 @@ class Solution:
                 stack.append((node.right, depth+1))
         return [res[depth] for depth in range(max_depth+1)]
 
+    def rightSideView2(self, root):
+        res = []
+        self.func(root, res, 0)
+        return res 
+
+    def func(self, root, res, level):
+        if not root:
+            return 
+        if level == len(res):
+            res.append(root.val)
+        self.func(root.right, res, level+1)
+        self.func(root.left, res, level+1)
+
+
+
+
+
+
     

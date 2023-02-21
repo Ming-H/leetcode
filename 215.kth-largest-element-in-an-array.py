@@ -44,3 +44,6 @@ class Solution:
         nums[left], nums[r] = nums[r], nums[left]
         return r
 
+
+
+

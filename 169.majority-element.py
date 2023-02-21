@@ -9,13 +9,16 @@ class Solution:
         Time complexity : O(n)
         Space complexity : O(1)
         """
-        count = 0
-        candidate = None
+        cur, cnt = None, 0
         for item in nums:
-            if count == 0:
-                candidate = item
-            if item == candidate:
-                count += 1
+            if cnt == 0:
+                cur = item 
+            if cur == item:
+                cnt += 1
             else:
-                count -= 1
-        return candidate
+                cnt -= 1
+        return cur
+
+
+
+

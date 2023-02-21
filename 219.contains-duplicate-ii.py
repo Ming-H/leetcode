@@ -3,14 +3,11 @@
 #
 # [219] Contains Duplicate II
 #
+from sympy import E
+
+
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
-        # dict = {}
-        # for i, v in enumerate(nums):
-        #     if v in dict and i-dict[v] <= k:
-        #         return True
-        #     dict[v] = i
-        # return False
         n=len(nums)
         if n==len(set(nums)):
             return False
@@ -21,3 +18,10 @@ class Solution:
                 if nums[i+j]==nums[i]:
                     return True
         return False
+
+
+ 
+
+
+    
+

@@ -39,5 +39,32 @@ class Solution:
                 else:
                     cur = stack[-1].right
         return res
+
+    def postorderTraversal2(self, root):
+        res = []
+        stack = [root]
+        if not root:
+            return None
+        while stack:
+            tmp = stack.pop()
+            res.append(tmp.val)
+            if tmp.left:
+                stack.append(tmp.left)
+            if tmp.right:
+                stack.append(tmp.right)
+        return res[::-1]
+
+
+    def postorderTraversal3(self, root):
+        res = []
+        self.dfs(root, res)
+        return res 
+    def dfs(self, root, res):
+        if root:
+            self.dfs(root.left, res)
+            self.dfs(root.right, res)
+            res.append(root.val) 
+        
+
         
 

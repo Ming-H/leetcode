@@ -19,5 +19,8 @@ class Solution:
             Sum += nums[i] - nums[i-k]
             res = max(res, Sum)
         return res / k
+
+
+
 # @lc code=end
 

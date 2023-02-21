@@ -6,23 +6,23 @@
 
 # @lc code=start
 class Solution:
-    def evalRPN(self, tokens: List[str]) -> int:
-        temp=[]
-        ops=("/","+","*","-")
-        for i in iter(tokens):
-            if i not in ops:
-                temp.append(i)
+    def evalRPN(self, nums: List[str]) -> int:
+        stack = []
+        ops = ('/', '+', '*', '-')
+        for item in nums:
+            if item not in ops:
+                stack.append(item)
             else:
-                b,a=map(int, (temp.pop(),temp.pop()))
-                if i=="+":
-                    temp.append(a+b)
-                elif i=="-":
-                    temp.append(a-b)
-                elif i=="*":
-                    temp.append(a*b)
+                b, a = map(int, (stack.pop(), stack.pop()))
+                if item =='+':
+                    stack.append(a+b)
+                elif item == '-':
+                    stack.append(a-b)
+                elif item == '*':
+                    stack.append(a*b)
                 else:
-                    temp.append(a/b)
-        return int(temp[0])
+                    stack.append(a/b)
+        return int(stack[0])
 
 # @lc code=end
 

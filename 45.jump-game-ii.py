@@ -18,6 +18,5 @@ class Solution:
             start, end = end + 1, maxend
         return step
 
-        
 # @lc code=end
 

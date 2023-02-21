@@ -8,20 +8,27 @@
 class Solution:
     def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
         """
+        快慢指针
         Time Complexity: O(N)
         Space Complexity: O(1)
         """
-        if k <= 1: 
-            return 0
+        if k<=1:
+            return 0 
         prod = 1
-        ans = left = 0
+        res, left = 0, 0
         for right, val in enumerate(nums):
-            prod *= val
+            prod *= val 
             while prod >= k:
                 prod /= nums[left]
                 left += 1
-            ans += right - left + 1
-        return ans
+            res += right-left +1
+        return res 
+    
+
+
+
+
+
 
 # @lc code=end
 

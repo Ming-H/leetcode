@@ -6,11 +6,11 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         curSum = maxSum = nums[0]
-        for num in nums[1:]:
-            curSum = max(num, curSum + num)
+        for item in nums[1:]:
+            curSum = max(item, curSum + item)
             maxSum = max(maxSum, curSum)
-
         return maxSum
+
 
         
 

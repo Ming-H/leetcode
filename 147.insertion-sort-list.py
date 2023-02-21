@@ -9,8 +9,12 @@
 #         self.val = x
 #         self.next = None
 
+
 class Solution:
     def insertionSortList(self, head: ListNode) -> ListNode:
+        """
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        """
         p = dummy = ListNode(0)
         cur = dummy.next = head
         while cur and cur.next:
@@ -27,4 +31,8 @@ class Solution:
             new.next = p.next
             p.next = new
         return dummy.next
+
+
+
+
 

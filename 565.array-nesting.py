@@ -20,7 +20,12 @@ class Solution:
                     nums[start], start = float('inf'), nums[start]
                     count += 1
                 res = max(res, count)
-
         return res
+
+
+
+                
+
+
 # @lc code=end
 

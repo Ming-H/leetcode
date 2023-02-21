@@ -1,11 +1,17 @@
-class Solution(object):
-    def partition(self, head, x):
-        """
-        :type head: ListNode
-        :type x: int
-        :rtype: ListNode
-        """
+#
+# @lc app=leetcode id=86 lang=python3
+#
+# [86] Partition List
+#
 
+# @lc code=start
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
         before_head = before = ListNode(0)
         after_head = after = ListNode(0)
         while head:
@@ -19,3 +25,5 @@ class Solution(object):
         after.next = None
         before.next = after_head.next
         return before_head.next
+# @lc code=end
+

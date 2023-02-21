@@ -11,19 +11,23 @@ class Solution:
         Time Complexity: O(N)
         Space Complexity: O(N)
         """
-        left, right, count = {}, {}, {}
-        for i, x in enumerate(nums):
-            if x not in left: 
-                left[x] = i
-            right[x] = i
-            count[x] = count.get(x, 0) + 1
+        left, right, cnt = {},{},{}
+        for i, item in enumerate(nums):
+            if item not in left:
+                left[item] = i
+            right[item] = i 
+            cnt[item] = cnt.get(item, 0) + 1
+        res = len(nums)
+        degree = max(cnt.values())
+        for x in cnt:
+            if cnt[x] == degree:
+                res = min(res, right[x]-left[x]+1)
+        return res 
 
-        ans = len(nums)
-        degree = max(count.values())
-        for x in count:
-            if count[x] == degree:
-                ans = min(ans, right[x] - left[x] + 1)
 
-        return ans
+
+
+
+
 # @lc code=end
 

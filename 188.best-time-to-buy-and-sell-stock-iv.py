@@ -7,22 +7,16 @@
 # @lc code=start
 class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
-        if len(prices)==0:
+        if not prices:
             return 0
-        if k >= len(prices):
-            res = 0
-            for i in range(1, len(prices)):
-                if prices[i] > prices[i - 1]:
-                    res += prices[i] - prices[i - 1]
-            return res
-        else:
-            g = [0] * (k+1)
-            l = [0] * (k+1)
-            for i in range(len(prices)-1):
-                diff = prices[i+1]-prices[i]
-                for j in range(k, 0, -1):
-                    l[j] = max(g[j-1]+max(diff, 0), l[j]+diff)
-                    g[j] = max(l[j], g[j])
-            return g[k]
+        n = len(prices)
+        buy = [-prices[0]] + [float('-inf') for _ in range(k)]
+        sell = [0] + [float('-inf') for _ in range(k)]
+        for i in range(1, n):
+            buy[0] = max(buy[0], sell[0] - prices[i])
+            for j in range(1, k + 1):
+                buy[j] = max(buy[j], sell[j] - prices[i])
+                sell[j] = max(sell[j], buy[j - 1] + prices[i]); 
+        return max(sell)
 # @lc code=end
 

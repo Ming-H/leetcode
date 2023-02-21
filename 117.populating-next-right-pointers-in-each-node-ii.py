@@ -7,6 +7,11 @@
 # @lc code=start
 
 # Definition for a Node.
+
+
+from this import d
+
+
 class Node:
     def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
         self.val = val
@@ -16,25 +21,39 @@ class Node:
 
 class Solution:
     def connect(self, root: 'Node') -> 'Node':
-        dummy = Node(0, None, None, None)
-        cur = dummy
-        head = root
+        """
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        """
+        cur = root
+        head, pre = None, None 
+        while cur:
+            if cur.left:
+                if pre:
+                    pre.next = cur.left 
+                else:
+                    head = cur.left 
+                pre = cur.left 
+            if cur.right:
+                if pre:
+                    pre.next = cur.right 
+                else:
+                    head =  cur.right 
+                pre = cur.right 
+            cur = cur.next 
+            if not cur:
+                cur = head 
+                pre, head = None, None 
+        return root 
 
-        while root:
-            if root.left:
-                cur.next = root.left
-                cur = cur.next
-            if root.right:
-                cur.next = root.right
-                cur = cur.next
-            root = root.next
-            if not root:
-                cur = dummy
-                root = dummy.next
-                dummy.next = None
-        return head
 
-       
+
+
+
+
+
+
+
+
 
 
 # @lc code=end

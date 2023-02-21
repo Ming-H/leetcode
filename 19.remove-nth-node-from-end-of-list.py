@@ -25,7 +25,7 @@ class Solution:
         if not fast:
             return head.next #删除第一个元素
         while fast.next:
-            fast = fast.nexty
+            fast = fast.next
             slow = slow.next
         slow.next = slow.next.next
         return head # 返回头

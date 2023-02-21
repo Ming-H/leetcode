@@ -21,34 +21,36 @@ class Solution:
         -读到3，用其替换解集中的6，解集变为[1,2,3]；
         -读到5，将其追加到解集中，解集变为[1,2,3,5]，得到答案为解集长度4。
         """
-    #     if len(nums)==0:
-    #         return 0
-    #     res = [nums[0]]
-    #     for i in range(1, len(nums)):
-    #         if nums[i] > res[-1]:
-    #             res.append(nums[i])
-    #         else:
-    #             index = self.findIndex(res, nums[i])
-    #             res[index] = nums[i]
-    #     return len(res)
-    # def findIndex(self, nums, target):
-    #     l, r = 0, len(nums)-1
-    #     while l<=r:
-    #         mid = (l+r)//2
-    #         if nums[mid]==target:
-    #             return mid
-    #         elif nums[mid]>target:
-    #             r = mid - 1
-    #         else:
-    #             l = mid + 1
-    #     return l
         if len(nums)==0:
             return 0
-        dp = [1 for _ in range(len(nums))]
-        for i in range(1,len(nums)):
-            for j in range(i):
-                if nums[i]>nums[j]:
-                    dp[i] = max(dp[i],dp[j]+1)
-        return max(dp)
+        res = [nums[0]]
+        for i in range(1, len(nums)):
+            if nums[i] > res[-1]:
+                res.append(nums[i])
+            else:
+                index = self.findIndex(res, nums[i])
+                res[index] = nums[i]
+        return len(res)
+
+
+    def findIndex(self, nums, target):
+        l, r = 0, len(nums)-1
+        while l<=r:
+            mid = (l+r)//2
+            if nums[mid]==target:
+                return mid
+            elif nums[mid]>target:
+                r = mid - 1
+            else:
+                l = mid + 1
+        return l
+        # if len(nums)==0:
+        #     return 0
+        # dp = [1 for _ in range(len(nums))]
+        # for i in range(1,len(nums)):
+        #     for j in range(i):
+        #         if nums[i]>nums[j]:
+        #             dp[i] = max(dp[i],dp[j]+1)
+        # return max(dp)
 
 

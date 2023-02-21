@@ -13,25 +13,19 @@
 
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        n1 = n2 = ''
-        
-        while l1 != None:
-            n1 += str(l1.val)
-            l1 = l1.next
-        
-        while l2 != None:
-            n2 += str(l2.val)
-            l2 = l2.next
-            
-        n3 = str(int(n1) + int(n2))
-        
-        head = ListNode(int(n3[0]))
-        res = head
-        for i in range(1,len(n3)):
-            head.next = ListNode(int(n3[i]))
-            head = head.next
-            
-        return res
+        s1,s2=0,0
+        while l1:
+            s1=s1*10+l1.val
+            l1=l1.next
+        while l2:
+            s2=s2*10+l2.val
+            l2=l2.next
+        head=dummy=ListNode(0)
+        for item in str(s1+s2):
+            dummy.next = ListNode(item)
+            dummy = dummy.next 
+        return head.next
+
 
 
 # @lc code=end

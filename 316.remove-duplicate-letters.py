@@ -7,14 +7,16 @@
 # @lc code=start
 class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
-        rindex = {item: i for i, item in enumerate(s)}
-        result = ''
+        rindex = {item:i for i, item in enumerate(s)}
+        res = ''
         for i, item in enumerate(s):
-            if item not in result:
-                while item < result[-1:] and i < rindex[result[-1]]:
-                    result = result[:-1]
-                result += item
-        return result
+            if item not in res:
+                while item<res[-1:] and i<rindex[res[-1:]]:
+                    res = res[:-1] 
+                res += item 
+        return res 
+
+
 
 # @lc code=end
 

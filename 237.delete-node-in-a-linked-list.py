@@ -20,6 +20,7 @@ class Solution:
         """
         node.val = node.next.val # 把下一个元素放到当前
         node.next = node.next.next
-        
+
+
 # @lc code=end
 

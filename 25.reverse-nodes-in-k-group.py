@@ -16,15 +16,26 @@ class Solution:
         
         while True:
             count = 0
-            while r and count < k:   # use r to locate the range
-                r = r.next
+            while r and count < k:
                 count += 1
-            if count == k:  # if size k satisfied, reverse the inner linked list
-                cur, pre = l, r
+                r = r.next
+            if count == k:
+                pre, cur = r, l
                 for _ in range(k):
-                    cur.next, cur, pre = pre, cur.next, cur  # standard reversing
-                jump.next, jump, l = pre, l, r  # connect two k-groups
+                    temp = cur.next
+                    cur.next = pre
+                    pre = cur
+                    cur = temp
+                jump.next = pre
+                jump = l
+                l = r
             else:
                 return dummy.next
+
+    
+
+
+
+
         
 

@@ -17,3 +17,6 @@ class Solution:
                     right -= 1
         return nums[left]
 
+
+
+

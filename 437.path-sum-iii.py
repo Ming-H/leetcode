@@ -11,17 +11,20 @@
 #         self.right = None
 
 class Solution:
-    def pathSum(self, root: TreeNode, sum: int) -> int:
-        return self.helper(root, sum, [sum])
+    def pathSum(self, root: TreeNode, target: int) -> int:
+        def func(root, origin, targets):
+            if not root:
+                return 0 
+            cnt = 0
+            for item in targets:
+                if item == root.val:
+                    cnt += 1
+            targets = [origin] + [item-root.val for item in targets]
+            return cnt + func(root.left, origin, targets) + \
+                func(root.right, origin, targets)
+        return func(root, target, [target])
 
-    def helper(self, node, origin, targets):
-        if not node: 
-            return 0
-        cnt = 0
-        for t in targets:
-            if t==node.val: 
-                cnt += 1                                         # count if sum == target
-        targets = [t-node.val for t in targets]+[origin]         # update the targets
-        return cnt+self.helper(node.left, origin, targets) \
-                    +self.helper(node.right, origin, targets)
+
+
+
 

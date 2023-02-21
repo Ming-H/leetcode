@@ -23,5 +23,8 @@ class Solution:
             pre = cur
             cur = next
         return pre
+
+
+
     
 

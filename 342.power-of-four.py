@@ -7,10 +7,8 @@
 # @lc code=start
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
-        import math
-        if(n <= 0):
-            return False
-        return((math.log(n) / math.log(4)).is_integer())
-        
+        # [231] Power of Two
+        return n > 0 and not (n&(n-1)) and int(sqrt(n)) * int(sqrt(n)) == n
+
 # @lc code=end
 

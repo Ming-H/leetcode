@@ -5,20 +5,24 @@
 #
 
 # @lc code=start
+from typing_extensions import dataclass_transform
+
+
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        counts = {}
+        d = {}
         res = []
+        for item in nums1:
+            d[item] = d.get(item, 0) + 1
+        for item in nums2:
+            if item in d and d[item]>0:
+                res.append(item)
+                d[item] -= 1
+        return res 
 
-        for num in nums1:
-            counts[num] = counts.get(num, 0) + 1
 
-        for num in nums2:
-            if num in counts and counts[num] > 0:
-                res.append(num)
-                counts[num] -= 1
 
-        return res
+
 
 # @lc code=end
 

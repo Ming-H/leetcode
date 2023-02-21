@@ -17,5 +17,14 @@ class Solution:
             best = max(best, K + x - j )
             K    = max(K   , x + j     )
         return best
+
+
+        maxVal = 0
+        cur = 0            
+        for i in range(1, len(values)):
+            cur = max(cur, values[i-1]+i-1)
+            maxVal = max(maxVal, cur+values[i]-i)
+        return maxVal
+
 # @lc code=end
 

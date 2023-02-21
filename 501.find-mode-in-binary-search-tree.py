@@ -13,7 +13,33 @@
 #         self.right = None
 
 class Solution:
-    def findMode(self, root: TreeNode) -> List[int]:
-        
+    
+    def findMode(self, root):
+        pre, max_cnt, cur = None, 0, 0
+        res = []
+        def dfs(node):
+            nonlocal pre, max_cnt, cur, res 
+            if not node:
+                return None 
+            dfs(node.left)
+            if node.val!=pre:
+                cur = 1
+            else:
+                cur += 1
+            if cur == max_cnt:
+                res.append(node.val)
+            elif cur > max_cnt:
+                res = [node.val]
+                max_cnt = cur 
+            pre = node.val
+            dfs(node.right)
+        dfs(root)
+        return res 
+
+
+
+
+
+
 # @lc code=end
 

@@ -10,34 +10,31 @@
 #         self.left = None
 #         self.right = None
 
+
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
-        # if root:
-        #     root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
-        # return root
+        if not root:
+            return None
+        left = self.invertTree(root.left)
+        right = self.invertTree(root.right)
+        root.left, root.right = right, left
+        return root
 
-        # if not root:
-        #     return None
-        # left = self.invertTree(root.left)
-        # right = self.invertTree(root.right)
-        # root.left, root.right = right, left
-        # return root
-
+    def invertTree2(self, root):
+        """
+        先序遍历
+        """
         if not root:
             return None
         queue = [root]
         while queue:
             current = queue.pop(0)
-            tmp = current.left
-            current.left = current.right
-            current.right = tmp
+            current.left, current.right = current.right, current.left
             if current.left :
                 queue.append(current.left)
             if current.right:
                 queue.append(current.right)
         return root
-
-
 
 
             

@@ -29,17 +29,17 @@ class Solution:
         较大值加上当前结点值，因为返回值的定义是以当前结点为终点的 path 
         之和，所以只能取 left 和 right 中较大的那个值，而不是两个都要
         """
-        def maxPathSum(root):  # DFS
+        def func(root):  # DFS
+            nonlocal res 
             if root is None:
                 return 0
-            left = max(maxPathSum(root.left), 0)
-            right = max(maxPathSum(root.right), 0)
-            self.maxSum = max(self.maxSum, root.val + left + right)
+            left = max(func(root.left), 0)
+            right = max(func(root.right), 0)
+            res = max(res, root.val + left + right)
             return max(left, right) + root.val
-        self.maxSum = float('-inf')
-        maxPathSum(root)
-        return self.maxSum
-        
+        res = float('-inf')
+        func(root)
+        return res 
         
 
     

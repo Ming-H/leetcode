@@ -8,6 +8,7 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> List[int]:
         """
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         https://blog.csdn.net/coder_orz/article/details/52071599
         使用异或，如果对所有nums里面的数都使用异或，最后的结果就是
         我们要求的数异或的结果，因为其他重复的值异或的结果变成0了。
@@ -20,33 +21,19 @@ class Solution:
         diff = 0
         for item in nums:
             diff ^= item
-        #Get its last set bit
         diff &= -diff
-
         res = [0, 0]
         for item in nums:
             if item & diff:
                 res[0] ^= item
             else:
                 res[1] ^= item
+        return res
+
+
+
         
-        # return res
-        
-        # mp = dict()
-        # res = list()
-        # #遍历数组
-        # for i in range(len(nums)): 
-        #     #统计每个数出现的频率
-        #     if nums[i] in mp:
-        #         mp[nums[i]] += 1 
-        #     else:
-        #         mp[nums[i]] = 1
-        # #再次遍历数组
-        # for i in range(len(nums)): 
-        #     #找到频率为1的两个数
-        #     if mp[nums[i]] == 1: 
-        #         res.append(nums[i])
-        # return res
+  
 
 # @lc code=end
 

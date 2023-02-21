@@ -28,5 +28,11 @@ class Solution:
                 nodes.append((node.right, 2*v+1))
 
         return  nodes[-1][1] == len(nodes)
+
+
+
+
+
+
 # @lc code=end
 

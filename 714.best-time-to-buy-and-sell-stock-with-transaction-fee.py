@@ -11,10 +11,15 @@ class Solution:
         Time Complexity: O(N)
         Space Complexity: O(1)
         """
-        cash, hold = 0, -prices[0]
-        for i in range(1, len(prices)):
-            cash = max(cash, hold + prices[i] - fee)
-            hold = max(hold, cash - prices[i])
-        return cash
+        sell, buy = 0, float('-inf')
+        for i in range(len(prices)):
+            sell = max(sell, buy + prices[i] - fee)
+            buy = max(buy, sell - prices[i])
+        return sell
+
+
+
+
+        
 # @lc code=end
 

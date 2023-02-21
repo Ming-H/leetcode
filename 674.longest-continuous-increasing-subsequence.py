@@ -11,12 +11,13 @@ class Solution:
         Time Complexity: O(N)
         Space Complexity: O(1)
         """
-        ans = anchor = 0
+        res = cur = 0
         for i in range(len(nums)):
-            if i and nums[i-1] >= nums[i]: 
-                anchor = i
-            ans = max(ans, i - anchor + 1)
-        return ans
+            if i and nums[i-1] >= nums[i]:
+                cur = i
+            res = max(res, i-cur+1)
+        return res 
+
         
 # @lc code=end
 

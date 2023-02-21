@@ -13,7 +13,8 @@ class Solution:
             locMin = min(locMin*item, item, locMax*item) 
             locMax = max(tmp*item, item, locMax*item)
             gloMax = max(gloMax, locMax)
-        return gloMax     
+        return gloMax
+
 
 
 

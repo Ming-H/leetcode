@@ -25,7 +25,7 @@ class Solution:
             fast = fast.next.next
         pre.next = None
         return self.merge(self.sortList(head), self.sortList(slow))
-    
+
     def merge(self, left, right):
         res = cur = ListNode(0)
         while left and right:

@@ -13,14 +13,19 @@ class Solution:
             将出现次数为i ( i∈[1, n] )的所有数字加到第i行。
         3. 逆序遍历二维数组(从频率高的开始)，将其中的前k行的元素输出。
         """
+
         n = len(nums)
-        cntDict = collections.defaultdict(int)
+        cntDict = dict()
         for item in nums:
-            cntDict[item] += 1
-        freqList = [[] for i in range(n + 1)]
-        for p in cntDict:
-            freqList[cntDict[p]].append(p)
-        ans = []
+            cntDict[item] = cntDict.get(item, 0) + 1
+        freqList = [[] for i in range(n+1)]
+        for item in cntDict:
+            freqList[cntDict[item]].append(item)
+        res = []
         for p in range(n, 0, -1):
-            ans += freqList[p]
-        return ans[:k]
+            res += freqList[p]
+        return res[:k]
+        
+            
+
+

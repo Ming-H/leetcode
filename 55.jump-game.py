@@ -13,7 +13,7 @@ class Solution:
                 return False
             m = max(m, i+item)
         return True
-        
-        
+
+
 # @lc code=end
 

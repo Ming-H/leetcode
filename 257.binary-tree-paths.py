@@ -25,6 +25,8 @@ class Solution:
             self.dfs(root.left, path+str(root.val)+ "->", res)
         if root.right:
             self.dfs(root.right, path+str(root.val)+ "->", res)
-            
+  
+
+
 
 

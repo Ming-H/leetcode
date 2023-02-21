@@ -13,38 +13,29 @@ class Solution:
     def rotateRight(self, head: ListNode, k: int) -> ListNode:
         if not head:
             return None
-    
-        if head.next == None:
+        if not head.next:
             return head
             
-        pointer = head
+        p = head
         length = 1
-        
-        while pointer.next:
-            pointer = pointer.next
+        while p.next:
+            p = p.next
             length += 1
-        
         rotateTimes = int(k%length)
-        
         if k == 0 or rotateTimes == 0:
             return head
         
-        fastPointer = head
-        slowPointer = head
-        
+        fast, slow = head, head 
         for i in range(rotateTimes):
-            fastPointer = fastPointer.next
+            fast = fast.next
+        while fast.next:
+            slow = slow.next
+            fast = fast.next
         
+        temp = slow.next
+        slow.next = None
+        fast.next = head
+   
         
-        while fastPointer.next:
-            slowPointer = slowPointer.next
-            fastPointer = fastPointer.next
-        
-        temp = slowPointer.next
-        
-        slowPointer.next = None
-        fastPointer.next = head
-        head = temp
-        
-        return head
+        return temp
 

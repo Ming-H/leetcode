@@ -13,12 +13,9 @@
 class Solution:
     def kthSmallest(self, root: TreeNode, k: int) -> int:
         """
-        :type root: TreeNode
-        :type k: int
-        :rtype: int
+        inorder traverse
         """
         stack = []
-        
         while True:
             while root:
                 stack.append(root)
@@ -28,4 +25,38 @@ class Solution:
             if not k:
                 return root.val
             root = root.right
+        
+        
+    def kthSmallest2(self, root, k):
+        count = []
+        self.helper(root, count)
+        return count[k-1]
+        
+    def helper(self, node, count):
+        if not node:
+            return
+        self.helper(node.left, count)
+        count.append(node.val)
+        self.helper(node.right, count)
+    
+
+    def kthSmallest3(self, root, k):
+        """
+        binary search
+        """
+        n = self.countNodes(root.left)
+        if k <= n:
+            return self.kthSmallest3(root.left, k)
+        elif k > n+1:
+            # 1 is counted as current node
+            return self.kthSmallest3(root.right, k-1-n)
+        return root.val 
+    def countNodes(self, root):
+        if not root:
+            return 0
+        return 1 + self.countNodes(root.left) \
+            + self.countNodes(root.right)
+
+        
+
 
