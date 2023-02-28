@@ -24,29 +24,22 @@ class Solution:
         """
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         """
-        cur = root
-        head, pre = None, None 
-        while cur:
-            if cur.left:
-                if pre:
-                    pre.next = cur.left 
-                else:
-                    head = cur.left 
-                pre = cur.left 
-            if cur.right:
-                if pre:
-                    pre.next = cur.right 
-                else:
-                    head =  cur.right 
-                pre = cur.right 
-            cur = cur.next 
-            if not cur:
-                cur = head 
-                pre, head = None, None 
-        return root 
-
-
-
+        dummy = Node(0, None, None, None)
+        cur = dummy
+        head = root
+        while root:
+            if root.left:
+                cur.next = root.left
+                cur = cur.next
+            if root.right:
+                cur.next = root.right
+                cur = cur.next
+            root = root.next
+            if not root:
+                cur = dummy
+                root = dummy.next
+                dummy.next = None
+        return head
 
 
 
