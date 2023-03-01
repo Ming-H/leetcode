@@ -15,11 +15,14 @@ class Solution:
         res = 0
         def dfs(root, val):
             nonlocal res
-            if root:
+            if not root:
+                return 0
+            if root.left:
                 dfs(root.left, val*10+root.val)
+            if root.right:
                 dfs(root.right, val*10+root.val)
-                if not root.left and not root.right:
-                    res += val*10 + root.val
+            if not root.left and not root.right:
+                res += val*10+root.val
         dfs(root, 0)
         return res
 
