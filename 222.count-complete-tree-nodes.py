@@ -25,9 +25,7 @@ class Solution:
             return pow(2, rightDepth) + self.countNodes(root.left)
 
     def getDepth(self, root):
-        if not root:
-            return 0
-        return 1 + self.getDepth(root.left)
+        return 1 + self.getDepth(root.left) if root else 0
 
 
 
