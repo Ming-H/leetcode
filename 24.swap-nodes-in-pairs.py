@@ -17,9 +17,8 @@ class Solution:
         #     pre.next, b.next, a.next = b, a, b.next
         #     pre = a
         # return self.next
-        dummy = ListNode(0)
+        ptr = dummy = ListNode(0)
         dummy.next = head
-        ptr = dummy
         while ptr.next and ptr.next.next:
             a, b = ptr.next, ptr.next.next
             ptr.next, b.next, a.next = b, a, b.next 

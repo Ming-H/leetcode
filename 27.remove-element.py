@@ -9,15 +9,14 @@ class Solution:
         Time complexity : O(n)
         Space complexity : O(1)
         """
-        i = 0
-        n = len(nums)-1
-        while i<=n:
-            if nums[i] == val:
-                nums[i] = nums[n]
-                n -= 1
+        l, r = 0, len(nums)-1
+        while l<=r:
+            if nums[l] == val:
+                nums[l] = nums[r]
+                r -= 1
             else:
-                i += 1
-        return i
+                l += 1
+        return l 
 
 
 
