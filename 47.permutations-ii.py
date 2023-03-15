@@ -9,12 +9,10 @@ class Solution:
         nums.sort()
         self.dfs(nums, [], res)
         return res
-
         
     def dfs(self, nums, path, res):
         if len(nums)==0:
             res.append(list(path))
-        pre = None
         for i in range(len(nums)):
             if i > 0 and nums[i] == nums[i-1]:
                 continue
