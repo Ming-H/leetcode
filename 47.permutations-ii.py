@@ -16,10 +16,7 @@ class Solution:
             res.append(list(path))
         pre = None
         for i in range(len(nums)):
-            if nums[i]==pre:
+            if i > 0 and nums[i] == nums[i-1]:
                 continue
-            path.append(nums[i])
-            self.dfs(nums[:i]+nums[i+1:], nums[i], path, res)
-            path.pop()
-            pre = nums[i]
-    
+            self.dfs(nums[:i]+nums[i+1:], path+[nums[i]], res)
+        
