@@ -20,7 +20,7 @@ class Solution:
                 return [None]
             res = []
             for i in range(left, right + 1):
-                left_nodes = func(left, i - 1)
+                left_nodes = func(left, i - 1) #!!!
                 right_nodes = func(i + 1, right)
                 for left_node in left_nodes:
                     for right_node in right_nodes:
