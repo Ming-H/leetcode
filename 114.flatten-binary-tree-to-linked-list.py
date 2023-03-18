@@ -17,10 +17,8 @@ class Solution:
         """
         if not root:
             return 
-        if root.left:
-            self.flatten(root.left)
-        if root.right:
-            self.flatten(root.right)
+        self.flatten(root.left)
+        self.flatten(root.right)
         tmp = root.right
         root.right = root.left 
         root.left = None
