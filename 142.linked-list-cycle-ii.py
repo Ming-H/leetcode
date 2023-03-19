@@ -22,14 +22,12 @@ class Solution:
         行到环起点 和 相遇点到环起点 的距离也是相等的，相当于他们同时减
         掉了 环的起点到他们相遇的点的距离
         """
-        dummy=ListNode(0)
-        dummy.next=head
-        slow=fast=dummy
-        while fast.next and fast.next.next:
+        slow=fast=head
+        while fast and fast.next:
             slow=slow.next
             fast=fast.next.next
             if slow==fast:
-                fast=dummy
+                fast=head
                 while slow!=fast:
                     slow=slow.next
                     fast=fast.next
