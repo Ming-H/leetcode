@@ -12,20 +12,14 @@
 
 class Solution:
     def sumNumbers(self, root: TreeNode) -> int:
-        res = 0
-        def dfs(root, val):
-            nonlocal res
-            if not root:
+        def dfs(node, curr_sum):
+            if not node:
                 return 0
-            if root.left:
-                dfs(root.left, val*10+root.val)
-            if root.right:
-                dfs(root.right, val*10+root.val)
-            if not root.left and not root.right:
-                res += val*10+root.val
-        dfs(root, 0)
-        return res
-
+            curr_sum = curr_sum * 10 + node.val
+            if not node.left and not node.right:
+                return curr_sum
+            return dfs(node.left, curr_sum) + dfs(node.right, curr_sum)
+        return dfs(root, 0)
 
             
 
