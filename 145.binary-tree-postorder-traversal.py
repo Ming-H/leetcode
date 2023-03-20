@@ -41,17 +41,17 @@ class Solution:
         return res
 
     def postorderTraversal2(self, root):
-        res = []
-        stack = [root]
         if not root:
-            return None
+            return []
+        stack = [root]
+        res = []
         while stack:
-            tmp = stack.pop()
-            res.append(tmp.val)
-            if tmp.left:
-                stack.append(tmp.left)
-            if tmp.right:
-                stack.append(tmp.right)
+            node = stack.pop()
+            res.append(node.val)
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
         return res[::-1]
 
 
