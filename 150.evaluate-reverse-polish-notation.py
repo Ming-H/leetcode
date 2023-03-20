@@ -8,21 +8,22 @@
 class Solution:
     def evalRPN(self, nums: List[str]) -> int:
         stack = []
-        ops = ('/', '+', '*', '-')
-        for item in nums:
-            if item not in ops:
-                stack.append(item)
-            else:
-                b, a = map(int, (stack.pop(), stack.pop()))
-                if item =='+':
-                    stack.append(a+b)
-                elif item == '-':
-                    stack.append(a-b)
-                elif item == '*':
-                    stack.append(a*b)
+        for token in nums:
+            if token in "+-*/":
+                b = stack.pop()
+                a = stack.pop()
+                if token == "+":
+                    stack.append(a + b)
+                elif token == "-":
+                    stack.append(a - b)
+                elif token == "*":
+                    stack.append(a * b)
                 else:
-                    stack.append(a/b)
-        return int(stack[0])
+                    stack.append(int(a / b))
+            else:
+                stack.append(int(token))
+        return stack[0]
+
 
 # @lc code=end
 
