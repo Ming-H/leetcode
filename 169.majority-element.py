@@ -4,21 +4,18 @@
 # [169] Majority Element
 #
 class Solution:
-    def majorityElement(self, nums: List[int]) -> int:
+    def majorityElement(self, items: List[int]) -> int:
         """
         Time complexity : O(n)
         Space complexity : O(1)
         """
-        cur, cnt = None, 0
-        for item in nums:
+        cnt = 0
+        cur = None
+        for item in items:
             if cnt == 0:
-                cur = item 
-            if cur == item:
-                cnt += 1
-            else:
-                cnt -= 1
+                cur = item
+            cnt += (1 if item == cur else -1)
         return cur
-
 
 
 
