@@ -5,15 +5,18 @@
 #
 class Solution:
     def shortestPalindrome(self, s: str) -> str:
-        # https://www.cnblogs.com/grandyang/p/4523624.html
-        # https://www.cnblogs.com/grandyang/p/6992403.html
-        rev_s = s[::-1]
-        l = s + "#" +  rev_s
-        p = [0] * len(l)
-        for i in range(1,len(l)):
-            j = p[i - 1]
-            while j > 0 and l[i] != l[j]:
-                j = p[j - 1]
-            p[i] = j + (l[i] == l[j])
-        return rev_s[:len(s) - p[-1]] + s
+        # if not s:
+        #     return ""
+        # n = len(s)
+        # for i in range(n, 0, -1):
+        #     if s[:i] == s[:i][::-1]:
+        #         return s[i:][::-1] + s
+        # return s[::-1] + s
+        i, n = 0, len(s)
+        for j in range(n-1, -1, -1):
+            if s[j]==s[i]:
+                i += 1
+        if i==n:
+            return s 
+        return s[i:][::-1] + self.shortestPalindrome(s[:i]) + s[i:]
 
