@@ -13,17 +13,14 @@ class Solution:
         """
         if len(s) != len(t):
             return False
-        alpha = [0] * 26
-        for c in s:
-            alpha[ord(c) - 97] += 1
-        for c in t:
-            alpha[ord(c) - 97] -= 1
-            if alpha[ord(c) - 97] < 0:
+        d = {}
+        for item in s:
+            d[item] = d.get(item, 0) + 1
+        for item in t:
+            if item not in d or d[item] == 0:
                 return False
+            d[item] -= 1
         return True
-
-
-
 
  
 # @lc code=end

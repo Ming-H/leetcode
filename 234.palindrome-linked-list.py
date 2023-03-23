@@ -15,23 +15,18 @@ class Solution:
             return True
         slow = fast = head
         while fast and fast.next:
-            slow = slow.next
+            slow  = slow.next
             fast = fast.next.next
-        prev = None
+        pre = None
         while slow:
-            curr = slow
+            cur = slow
             slow = slow.next
-            curr.next = prev
-            prev = curr
-        while prev:
-            if prev.val != head.val:
+            cur.next = pre
+            pre = cur
+        while pre:
+            if pre.val!=head.val:
                 return False
-            prev = prev.next
+            pre = pre.next
             head = head.next
-        return True
-
-
-
-
-        
+        return True    
 

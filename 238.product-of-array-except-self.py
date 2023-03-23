@@ -2,8 +2,6 @@
 # @lc app=leetcode id=238 lang=python3
 #
 # [238] Product of Array Except Self
-#
-from sympy import N
 
 
 class Solution:
