@@ -11,18 +11,24 @@
 
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
-        # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        pre = None
+        if not head or not head.next:
+            return True
         slow = fast = head
         while fast and fast.next:
+            slow = slow.next
             fast = fast.next.next
-            pre, pre.next, slow = slow, pre, slow.next
-        if fast:
+        prev = None
+        while slow:
+            curr = slow
             slow = slow.next
-        while pre and pre.val == slow.val:
-            slow = slow.next
-            pre = pre.next
-        return not pre
+            curr.next = prev
+            prev = curr
+        while prev:
+            if prev.val != head.val:
+                return False
+            prev = prev.next
+            head = head.next
+        return True
 
 
 
