@@ -13,8 +13,7 @@ class Solution:
         遍历一遍，将 item 放到 item-1 的位置，最后0所处的位置
         加一即为所求
         """
-        expected_sum = len(nums)*(len(nums)+1)//2
-        actual_sum = sum(nums)
-        return expected_sum - actual_sum
+        n = len(nums)
+        return n * (n+1) // 2 - sum(nums)
 
         
