@@ -12,18 +12,17 @@
 
 class Solution:
     def rob(self, root: TreeNode) -> int:
-        def dfs(root: TreeNode):
-            """
-            dp_node[0] =[rob the current node how much you gain] 
-            dp_node[1] =[skip the current node how much you gain]
-            """
-            if not root:
+        def dfs(node):
+            if not node:
                 return (0, 0)
-            left = dfs(root.left)
-            right = dfs(root.right)
-            return (root.val + left[1] + right[1], 
-                    max(left) + max(right))
+            left = dfs(node.left)
+            right = dfs(node.right)
+            rob = node.val + left[1] + right[1]
+            not_rob = max(left) + max(right)
+            return (rob, not_rob)
         return max(dfs(root))
+        
+
 
 
 

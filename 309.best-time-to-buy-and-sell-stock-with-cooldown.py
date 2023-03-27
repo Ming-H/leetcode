@@ -9,7 +9,7 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         buy, sell, cooldown = float('-inf'), 0, 0
         for item in prices:
-            buy = max(buy, cooldown - item)
+            buy = max(buy, cooldown-item)
             cooldown = max(cooldown, sell)
             sell = max(sell, buy + item)
         return sell

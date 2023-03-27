@@ -20,7 +20,7 @@ class Solution:
         在奇偶组内，各数字要保持原来的顺序
         第一个是奇数，第二个是偶数
         """
-        if not head : 
+        if not head or not head.next:
             return head
         odd = oddHead = head
         even = evenHead = head.next
