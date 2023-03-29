@@ -33,8 +33,5 @@ class Solution:
         return oddHead
 
 
-
-
-
 # @lc code=end
 

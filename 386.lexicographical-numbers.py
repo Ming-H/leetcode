@@ -10,15 +10,19 @@ class Solution:
         """
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         """
-        def dfs(i):
-            if i <= n:
-                result.append(i)
-                for d in range(10):
-                    dfs(10 * i + d)
-        result = []
-        for i in range(1, 10):
-            dfs(i)
-        return result
+        res = []
+        curr = 1
+        for i in range(n):
+            res.append(curr)
+            if curr * 10 <= n:
+                curr *= 10
+            else:
+                if curr >= n:
+                    curr //= 10
+                curr += 1
+                while curr % 10 == 0:
+                    curr //= 10
+        return res
 
 
 
