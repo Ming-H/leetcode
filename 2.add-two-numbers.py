@@ -28,10 +28,6 @@ class Solution:
             carry, val = divmod(v1+v2+carry, 10)
             ptr.next = ListNode(val)
             ptr = ptr.next
+        if carry:
+            ptr.next = ListNode(carry)
         return head.next
-
-
-        
-
-
-

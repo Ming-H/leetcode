@@ -6,7 +6,7 @@
 class Solution:
     def findMedianSortedArrays(self, A, B):
         """
-        Time complexity: O(log(min(m,n))).
+        Time complexity: O(log(m+n))
         Space complexity: O(1)
         """
         l = len(A) + len(B)

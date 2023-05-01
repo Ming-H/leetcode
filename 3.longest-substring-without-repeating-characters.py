@@ -11,14 +11,12 @@ class Solution:
         Time complexity : O(n)
         Space complexity (HashMap) : O(min(m, n))
         """
-        start = maxlen = 0
-        usedchar = {}
+        start = res = 0
+        d = {}
         for i, item in enumerate(s):
-            if item in usedchar and start<=usedchar[item]:
-                start = usedchar[item] + 1 #跳过前面出现过的字符
+            if item in d and start <= d[item]:
+                start = d[item] + 1
             else:
-                maxlen = max(maxlen, i-start+1)
-            usedchar[item] = i
-        return maxlen
-       
-
+                res = max(res, i-start+1)
+            d[item] = i
+        return res
