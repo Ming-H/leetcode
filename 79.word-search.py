@@ -4,30 +4,27 @@
 # [79] Word Search
 #
 class Solution:
-    def exist(self, board: List[List[str]], word: str) -> bool:
-        if not board:
+    def exist(self, matrix, word):
+        if not matrix:
             return False
-        for i in range(len(board)):
-            for j in range(len(board[0])):
-                if self.dfs(board, i, j, word):
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if self.dfs(matrix, i, j, word):
                     return True
         return False
 
-    def dfs(self, board, i, j, word):
+    def dfs(self, matrix, i, j, word):
         if len(word) == 0:
             return True
-        if i<0 or i>=len(board) or j<0 or j>=len(board[0]) or \
-                        word[0]!=board[i][j]:
+        if i < 0 or i >= len(matrix) or j < 0 or j >= len(matrix[0]) \
+                or matrix[i][j] != word[0]:
             return False
-        tmp = board[i][j]  # first character is found, check the remaining part
-        board[i][j] = "#"  # avoid visit agian 
-        # check whether can find "word" along one direction
-        res = self.dfs(board, i+1, j, word[1:]) or \
-                self.dfs(board, i-1, j, word[1:]) or \
-                self.dfs(board, i, j+1, word[1:]) or \
-                self.dfs(board, i, j-1, word[1:])
-        board[i][j] = tmp # 还原
-        return res 
+        tmp = matrix[i][j]
+        matrix[i][j] = '#'
+        res = self.dfs(matrix, i+1, j, word[1:]) or \
+            self.dfs(matrix, i-1, j, word[1:]) or \
+            self.dfs(matrix, i, j+1, word[1:]) or \
+            self.dfs(matrix, i, j-1, word[1:])
 
-
-
+        matrix[i][j] = tmp
+        return res
