@@ -29,16 +29,17 @@ class Solution:
         较大值加上当前结点值，因为返回值的定义是以当前结点为终点的 path 
         之和，所以只能取 left 和 right 中较大的那个值，而不是两个都要
         """
-        self.max_sum = float('-inf')
+        max_sum = float('-inf')
         def dfs(node):
+            nonlocal max_sum 
             if not node:
                 return 0
             left_sum = max(dfs(node.left), 0)
             right_sum = max(dfs(node.right), 0)
-            self.max_sum = max(self.max_sum, left_sum + right_sum + node.val)
+            max_sum = max(max_sum, left_sum + right_sum + node.val)
             return max(left_sum, right_sum) + node.val
         dfs(root)
-        return self.max_sum
+        return max_sum
         
 
     
