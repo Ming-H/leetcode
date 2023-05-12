@@ -9,6 +9,7 @@ class Solution:
     Output: "9534330"
     """
     # bubble sort
+
     def largestNumber(self, nums):
         for i in range(len(nums), 0, -1):
             for j in range(i-1):
@@ -16,5 +17,3 @@ class Solution:
                         str(nums[j+1]) + str(nums[j]):
                     nums[j], nums[j+1] = nums[j+1], nums[j]
         return str(int("".join(map(str, nums))))
-
-

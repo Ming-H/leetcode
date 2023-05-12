@@ -7,33 +7,21 @@
 # @lc code=start
 class Solution:
     def calculate(self, s: str) -> int:
-        ops = [1]
-        sign = 1
-        ret = 0
-        n = len(s)
-        i = 0
-        while i < n:
-            if s[i] == ' ':
-                i += 1
-            elif s[i] == '+':
-                sign = ops[-1]
-                i += 1
-            elif s[i] == '-':
-                sign = -ops[-1]
-                i += 1
-            elif s[i] == '(':
-                ops.append(sign)
-                i += 1
-            elif s[i] == ')':
-                ops.pop()
-                i += 1
-            else:
-                num = 0
-                while i < n and s[i].isdigit():
-                    num = num * 10 + ord(s[i]) - ord('0')
+        total = 0
+        i, signs = 0, [1, 1]
+        while i < len(s):
+            c = s[i]
+            if c.isdigit():
+                start = i
+                while i < len(s) and s[i].isdigit():
                     i += 1
-                ret += num * sign
-        return ret
-
-# @lc code=end
-
+                total += signs.pop() * int(s[start:i])
+                continue
+            if c in '+-(':
+                signs += signs[-1] * (1, -1)[c == '-'],
+            elif c == ')':
+                signs.pop()
+            i += 1
+        return total
+    
+        
