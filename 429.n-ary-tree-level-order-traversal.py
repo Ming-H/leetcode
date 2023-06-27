@@ -13,20 +13,34 @@ class Node:
         self.children = children
 """
 
+
 class Solution:
     def levelOrder(self, root: 'Node') -> List[List[int]]:
         res = []
+
         def dfs(root, level, res):
             if not root:
-                return 
+                return
             if len(res) < level+1:
                 res.append([])
             res[level].append(root.val)
             for item in root.children:
                 dfs(item, level+1, res)
         dfs(root, 0, res)
-        return res 
-    
+        return res
+
+        # if not root:
+        #     return []
+        # result = []
+        # queue = [root]
+        # while queue:
+        #     level = []
+        #     for i in range(len(queue)):
+        #         node = queue.pop(0)
+        #         level.append(node.val)
+        #         queue.extend(node.children)
+        #     result.append(level)
+        # return result
+
 
 # @lc code=end
-

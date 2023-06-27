@@ -8,24 +8,16 @@
 class Solution:
     def integerReplacement(self, n: int) -> int:
         """
-        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        log(N)
         """
-        cnt = 0
-        while n != 1:
+        def helper(n, count):
+            if n == 1:
+                return count
             if n % 2 == 0:
-                n = n //2
-            elif n % 4 == 1 or n == 3:
-                n -= 1
+                return helper(n//2, count+1)
             else:
-                n += 1
-            cnt += 1
-        
-        return cnt
-
-
-
-
+                return min(helper(n+1, count+1), helper(n-1, count+1))
+        return helper(n, 0)
 
 
 # @lc code=end
-
