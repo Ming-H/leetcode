@@ -5,14 +5,13 @@
 #
 
 # @lc code=start
-from matplotlib import collections
+import collections
 
 
 class Solution:
     def fourSumCount(self, A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
         d = collections.Counter(c+d for c in C for d in D)
-        return sum(d.get(-(a+b), 0) for a in A for b in B)
-    
+        return sum(d[-a-b] for a in A for b in B)
+
 
 # @lc code=end
-

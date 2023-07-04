@@ -14,7 +14,7 @@ class Solution:
     def pathSum(self, root: TreeNode, target: int) -> int:
         def func(root, origin, targets):
             if not root:
-                return 0 
+                return 0
             cnt = 0
             for item in targets:
                 if item == root.val:
@@ -23,8 +23,3 @@ class Solution:
             return cnt + func(root.left, origin, targets) + \
                 func(root.right, origin, targets)
         return func(root, target, [target])
-
-
-
-
-

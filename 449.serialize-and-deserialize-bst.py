@@ -17,6 +17,7 @@ class Codec:
 
     def serialize(self, root: Optional[TreeNode]) -> str:
         res = []
+
         def preOrder(root):
             if root:
                 res.append(str(root.val))
@@ -29,16 +30,15 @@ class Codec:
         if not data:
             return None
         nums = [item for item in data.split()]
+
         def build(nums, lower_bound, upper_bound):
             if nums and lower_bound < int(nums[0]) < upper_bound:
                 root_value = int(nums.pop(0))
                 root_node = TreeNode(root_value)
-                root_node.left = build(nums, lower_bound, root_value )
-                root_node.right = build(nums, root_value, upper_bound )
-                return root_node        
-        return build(nums, float('-inf'), float('inf')) 
-
-
+                root_node.left = build(nums, lower_bound, root_value)
+                root_node.right = build(nums, root_value, upper_bound)
+                return root_node
+        return build(nums, float('-inf'), float('inf'))
 
 
 # Your Codec object will be instantiated and called as such:
@@ -49,4 +49,3 @@ class Codec:
 # ans = deser.deserialize(tree)
 # return ans
 # @lc code=end
-
