@@ -11,31 +11,26 @@
 
 class Solution:
     def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
-        dummy = jump = ListNode(0)
-        dummy.next = l = r = head
-        
+        dummy = ListNode(0)
+        p = dummy
         while True:
-            count = 0
-            while r and count < k:
-                count += 1
-                r = r.next
-            if count == k:
-                pre, cur = r, l
-                for _ in range(k):
-                    temp = cur.next
-                    cur.next = pre
-                    pre = cur
-                    cur = temp
-                jump.next = pre
-                jump = l
-                l = r
+            count = k
+            stack = []
+            tmp = head
+            while count and tmp:
+                stack.append(tmp)
+                tmp = tmp.next
+                count -= 1
+            # if the count is 0, it means we have enough nodes to reverse
+            if count == 0:
+                while stack:
+                    p.next = stack.pop()
+                    p = p.next
             else:
-                return dummy.next
-
-    
-
-
-
-
-        
-
+                while stack:
+                    p.next = stack.pop(0)
+                    p = p.next
+                break
+            head = tmp
+        p.next = None
+        return dummy.next
