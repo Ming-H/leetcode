@@ -21,14 +21,3 @@ class Solution:
         if val:
             res.append(val)
         return res[::-1]
-
-
-
-
-
-
-
-
-
-
-
