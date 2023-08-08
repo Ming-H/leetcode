@@ -19,19 +19,19 @@ class Solution:
             return head
         dummy = ListNode(0)
         dummy.next = head
-        curr = head.next
         last_sorted = head
-        while curr:
-            if curr.val >= last_sorted.val:
+        cur = head.next
+        while cur:
+            if cur.val >= last_sorted.val:
                 last_sorted = last_sorted.next
             else:
-                prev = dummy
-                while prev.next.val < curr.val:
-                    prev = prev.next
-                last_sorted.next = curr.next
-                curr.next = prev.next
-                prev.next = curr
-            curr = last_sorted.next
+                pre = dummy
+                while pre.next.val < cur.val:
+                    pre = pre.next
+                last_sorted.next = cur.next
+                cur.next = pre.next
+                pre.next = cur
+            cur = last_sorted.next
         return dummy.next
 
 
