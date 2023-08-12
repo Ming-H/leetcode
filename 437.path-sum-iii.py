@@ -12,14 +12,18 @@
 
 class Solution:
     def pathSum(self, root: TreeNode, target: int) -> int:
-        def func(root, origin, targets):
-            if not root:
+        if not root:
+            return 0
+
+        def count(node, target):
+            if not node:
                 return 0
-            cnt = 0
-            for item in targets:
-                if item == root.val:
-                    cnt += 1
-            targets = [origin] + [item-root.val for item in targets]
-            return cnt + func(root.left, origin, targets) + \
-                func(root.right, origin, targets)
-        return func(root, target, [target])
+            cnt = 1 if node.val == target else 0
+            cnt += count(node.left, target - node.val)
+            cnt += count(node.right, target - node.val)
+            return cnt
+
+        res = count(root, target)
+        res += self.pathSum(root.left, target)
+        res += self.pathSum(root.right, target)
+        return res

@@ -10,32 +10,24 @@
 #         self.left = None
 #         self.right = None
 
-from requests import delete
-
 
 class Solution:
     def deleteNode(self, root: TreeNode, key: int) -> TreeNode:
-        if not root: 
-            return None
-        
-        if root.val == key:
-            if root.left:
-                left_right_most = root.left
-                while left_right_most.right:
-                    left_right_most = left_right_most.right
-                left_right_most.right = root.right
+        if not root:
+            return root
+        if key < root.val:
+            root.left = self.deleteNode(root.left, key)
+        elif key > root.val:
+            root.right = self.deleteNode(root.right, key)
+        else:
+            if not root.left:
+                return root.right
+            elif not root.right:
                 return root.left
             else:
-                return root.right
-        elif root.val > key:
-            root.left = self.deleteNode(root.left, key)
-        else:
-            root.right = self.deleteNode(root.right, key)
-            
+                cur = root.right
+                while cur.left:
+                    cur = cur.left
+                root.val = cur.val
+                root.right = self.deleteNode(root.right, cur.val)
         return root
-
-    
-
-
-
-

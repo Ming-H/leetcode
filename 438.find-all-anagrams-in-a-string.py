@@ -7,22 +7,24 @@
 # @lc code=start
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
-        p_dict=collections.Counter(p)
-        s_dict=collections.Counter(s[:len(p)])
-        res=[]
-        i=0
-        j=len(p)
-        while j<=len(s):
-            if s_dict==p_dict:
-                res.append(i)
-            s_dict[s[i]]-=1
-            if s_dict[s[i]]<=0:
-                s_dict.pop(s[i])
-            if j<len(s):    
-                s_dict[s[j]]+=1
-            j+=1
-            i+=1
-        return res  
+        """
+        The time complexity of this solution is O(n), 
+        where n is the length of s. 
+        """
+        pCount = [0] * 26
+        sCount = [0] * 26
+        result = []
+        for char in p:
+            pCount[ord(char) - ord('a')] += 1
+        left = 0
+        for right in range(len(s)):
+            sCount[ord(s[right]) - ord('a')] += 1
+            if right - left + 1 > len(p):
+                sCount[ord(s[left]) - ord('a')] -= 1
+                left += 1
+            if pCount == sCount:
+                result.append(left)
+        return result
 
 
 
