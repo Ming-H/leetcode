@@ -13,33 +13,29 @@
 #         self.right = None
 
 class Solution:
-    
+
     def findMode(self, root):
-        pre, max_cnt, cur = None, 0, 0
+        pre, max_cnt, cnt = None, 0, 0
         res = []
-        def dfs(node):
-            nonlocal pre, max_cnt, cur, res 
+
+        def inorder(node):
+            nonlocal pre, max_cnt, cnt, res
             if not node:
-                return None 
-            dfs(node.left)
-            if node.val!=pre:
-                cur = 1
+                return None
+            inorder(node.left)
+            if node.val != pre:
+                cnt = 1
+                pre = node.val
             else:
-                cur += 1
-            if cur == max_cnt:
+                cnt += 1
+            if cnt == max_cnt:
                 res.append(node.val)
-            elif cur > max_cnt:
+            elif cnt > max_cnt:
                 res = [node.val]
-                max_cnt = cur 
-            pre = node.val
-            dfs(node.right)
-        dfs(root)
-        return res 
-
-
-
-
+                max_cnt = cnt
+            inorder(node.right)
+        inorder(root)
+        return res
 
 
 # @lc code=end
-

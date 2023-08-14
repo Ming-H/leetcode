@@ -5,27 +5,35 @@
 #
 class Solution:
     def maximumGap(self, nums: List[int]) -> int:
-        """
-        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        """
-        if len(nums) < 2: 
+        if len(nums) < 2:
             return 0
-        hi, lo, ans = max(nums), min(nums), 0
-        bsize = (hi - lo) // (len(nums) - 1) or 1
-        buckets = [[] for _ in range(((hi - lo) // bsize) + 1)]
-        for n in nums:
-            buckets[(n - lo) // bsize].append(n)
-        currhi = 0
-        for b in buckets:
-            if not len(b): 
+
+        min_value = min(nums)
+        max_value = max(nums)
+
+        if min_value == max_value:
+            return 0
+
+        bucket_size = (max_value - min_value) / (len(nums) - 1)
+        buckets = [[float('inf'), float('-inf')] for _ in range(len(nums) - 1)]
+
+        for num in nums:
+            if num == max_value:
                 continue
-            prevhi, currlo = currhi or b[0], b[0]
-            for n in b: 
-                currhi, currlo = max(currhi, n), min(currlo, n)
-            ans = max(ans, currlo - prevhi)
-        return ans
+            bucket_index = int((num - min_value) / bucket_size)
+            bucket = buckets[bucket_index]
+            bucket[0] = min(bucket[0], num)
+            bucket[1] = max(bucket[1], num)
 
+        max_diff = 0
+        prev_max = min_value
 
+        for bucket in buckets:
+            if bucket[0] == float('inf'):
+                continue
+            max_diff = max(max_diff, bucket[0] - prev_max)
+            prev_max = bucket[1]
 
+        max_diff = max(max_diff, max_value - prev_max)
 
-
+        return max_diff

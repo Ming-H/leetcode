@@ -8,31 +8,19 @@
 class Solution:
     def longestPalindromeSubseq(self, s: str) -> int:
         """
-        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        dp[i][j] represents the length of the longest palindromic subsequence 
+        in the substring s[i:j+1].
         """
-        # d = {}
-        # def f(s):
-        #     if s not in d:
-        #         maxL = 0    
-        #         for c in set(s):
-        #             i, j = s.find(c), s.rfind(c)
-        #             maxL = max(maxL, 1 if i==j else 2+f(s[i+1:j]))
-        #         d[s] = maxL
-        #     return d[s]
-        # return f(s)
-
         n = len(s)
         dp = [[0]*n for _ in range(n)]
         for i in range(n-1, -1, -1):
             dp[i][i] = 1
             for j in range(i+1, n):
-                if s[i]==s[j]:
+                if s[i] == s[j]:
                     dp[i][j] = dp[i + 1][j - 1] + 2
                 else:
                     dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])
         return dp[0][n-1]
 
 
-
 # @lc code=end
-
