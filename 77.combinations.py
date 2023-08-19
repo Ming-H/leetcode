@@ -12,13 +12,11 @@ class Solution:
         return res
 
     def dfs(self, index, n, k, path, res):
-        if k==0:
+        if k == 0:
             res.append(path)
             return
         for i in range(index+1, n+1):
             self.dfs(i, n, k-1, path+[i], res)
 
 
-
 # @lc code=end
-
