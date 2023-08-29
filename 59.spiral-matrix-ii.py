@@ -18,7 +18,4 @@ class Solution:
         return matrix
 
 
-
-
 # @lc code=end
-

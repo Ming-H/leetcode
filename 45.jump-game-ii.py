@@ -7,16 +7,17 @@
 # @lc code=start
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        start, end, step = 0, 0, 0
-        while end < len(nums) - 1:
-            step += 1
-            maxend = end + 1
-            for i in range(start, end + 1):
-                if i + nums[i] >= len(nums) - 1:  # 等号
-                    return step
-                maxend = max(maxend, i + nums[i])
-            start, end = end + 1, maxend
-        return step
+        if len(nums) < 2:
+            return 0
+        max_reach, step, end = 0, 0, 0
+        for i in range(len(nums)-1):
+            max_reach = max(max_reach, i+nums[i])
+            if i == end:
+                end = max_reach
+                step += 1
+            if end >= len(nums)-1:
+                return step
+        return False
+
 
 # @lc code=end
-
