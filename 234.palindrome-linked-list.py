@@ -15,7 +15,7 @@ class Solution:
             return True
         slow = fast = head
         while fast and fast.next:
-            slow  = slow.next
+            slow = slow.next
             fast = fast.next.next
         pre = None
         while slow:
@@ -24,9 +24,8 @@ class Solution:
             cur.next = pre
             pre = cur
         while pre:
-            if pre.val!=head.val:
+            if pre.val != head.val:
                 return False
             pre = pre.next
             head = head.next
-        return True    
-
+        return True

@@ -7,33 +7,25 @@ class Solution:
     def maximumGap(self, nums: List[int]) -> int:
         if len(nums) < 2:
             return 0
-
-        min_value = min(nums)
-        max_value = max(nums)
-
-        if min_value == max_value:
+        min_val, max_val = min(nums), max(nums)
+        if min_val == max_val:
             return 0
+        bucket_size = (max_val-min_val)/(len(nums)-1)
+        buckets = [[float('inf'), float('-inf')] for _ in range(len(nums)-1)]
 
-        bucket_size = (max_value - min_value) / (len(nums) - 1)
-        buckets = [[float('inf'), float('-inf')] for _ in range(len(nums) - 1)]
-
-        for num in nums:
-            if num == max_value:
+        for item in nums:
+            if item == max_val:
                 continue
-            bucket_index = int((num - min_value) / bucket_size)
-            bucket = buckets[bucket_index]
-            bucket[0] = min(bucket[0], num)
-            bucket[1] = max(bucket[1], num)
+            index = int((item - min_val) / bucket_size)
+            buckets[index][0] = min(buckets[index][0], item)
+            buckets[index][1] = max(buckets[index][1], item)
 
-        max_diff = 0
-        prev_max = min_value
-
+        diff = 0
+        pre_max = min_val
         for bucket in buckets:
             if bucket[0] == float('inf'):
                 continue
-            max_diff = max(max_diff, bucket[0] - prev_max)
-            prev_max = bucket[1]
-
-        max_diff = max(max_diff, max_value - prev_max)
-
-        return max_diff
+            diff = max(diff, bucket[0]-pre_max)
+            pre_max = bucket[1]
+        diff = max(diff, max_val-pre_max)
+        return diff

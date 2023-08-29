@@ -37,15 +37,10 @@ class Solution:
          1了，此时就要清空 one 和 two 了，让它们 ‘与’ 上 three 的相反数0即
          可，最终结果将会保存在 one 中
         """
-        one = 0
-        two = 0
-        three = 0
-        for i in range(len(nums)):
-            two |= one & nums[i]
-            one ^= nums[i]
-            three = one & two
-            one &= ~three
-            two &= ~three
-        return one
+        a, b = 0, 0
+        for item in nums:
+            a = a ^ item & (~b)
+            b = b ^ item & (~a)
+        return a
 # @lc code=end
 

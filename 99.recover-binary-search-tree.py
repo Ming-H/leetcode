@@ -20,31 +20,20 @@ class Solution:
         while the second element is always smaller than its previous one.
         BST使用中序遍历成为有序数组
         """
-        first = None 
-        second = None 
+        first = None
+        second = None
         pre = TreeNode(float('-inf'))
+
         def func(root):
-            nonlocal  first, second, pre
+            nonlocal first, second, pre
             if not root:
-                return 
+                return
             func(root.left)
-            if not first and pre.val>=root.val:
+            if not first and pre.val >= root.val:
                 first = pre
-            if first and pre.val>=root.val:
-                second = root 
-            pre = root 
+            if first and pre.val >= root.val:
+                second = root
+            pre = root
             func(root.right)
         func(root)
         first.val, second.val = second.val, first.val
-
-
-
- 
-
-
-
-
-
-
-
-
