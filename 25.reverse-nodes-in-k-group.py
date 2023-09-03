@@ -21,7 +21,6 @@ class Solution:
                 stack.append(tmp)
                 tmp = tmp.next
                 count -= 1
-            # if the count is 0, it means we have enough nodes to reverse
             if count == 0:
                 while stack:
                     p.next = stack.pop()
