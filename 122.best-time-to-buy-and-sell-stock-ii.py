@@ -6,6 +6,7 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         """
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         Time complexity : O(n)
         Space complexity: O(1)
         """
@@ -16,6 +17,3 @@ class Solution:
                 maxprofit += item - cur
             cur = item
         return maxprofit
-        
-       
-
