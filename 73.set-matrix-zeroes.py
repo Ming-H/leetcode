@@ -32,10 +32,10 @@ class Solution:
             for j in range(1, n):
                 if matrix[i][0]==0 or matrix[0][j]==0:
                     matrix[i][j] = 0 
-        if matrix[0][0]==0:
+        if matrix[0][0]==0:  #顺序不能变
             for j in range(n):
                 matrix[0][j] = 0 
-        if is_col:
+        if is_col:  #顺序不能变
             for i in range(m):
                 matrix[i][0] = 0 
 
