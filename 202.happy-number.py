@@ -7,15 +7,12 @@
 # @lc code=start
 class Solution:
     def isHappy(self, n: int) -> bool:
-        mem = set()
+        seen = set()
         while n != 1:
-            n = sum([int(i) ** 2 for i in str(n)])
-            if n in mem:
+            n = sum(int(digit) ** 2 for digit in str(n))
+            if n in seen:
                 return False
-            else:
-                mem.add(n)
-        else:
-            return True
-        
-# @lc code=end
+            seen.add(n)
+        return True
 
+# @lc code=end

@@ -12,6 +12,7 @@
 class Solution:
     def reverseBetween(self, head, m, n):
         """
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         :type head: ListNode
         :type m: int
         :type n: int
@@ -21,8 +22,8 @@ class Solution:
         """
         if not head:
             return None
-        pre, cur  = None, head
-        while m>1:
+        pre, cur = None, head
+        while m > 1:
             pre = cur
             cur = cur.next
             m, n = m-1, n-1
@@ -39,5 +40,3 @@ class Solution:
             head = pre
         tail.next = cur
         return head
-
-
