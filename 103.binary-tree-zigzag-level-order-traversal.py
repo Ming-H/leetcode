@@ -12,43 +12,18 @@
 
 class Solution:
     def zigzagLevelOrder(self, root: TreeNode) -> List[List[int]]:
-        ans = []
-        self.addLevel(ans, 0, root)
-        return ans
-        
-    def addLevel(self, ans, level, root):
         if not root:
-            return
-        if len(ans) <= level:
-            ans.append([])
-        if not level%2:
-            ans[level].append(root.val)
-        else:
-            ans[level].insert(0,root.val)
-        self.addLevel(ans, level + 1, root.left)
-        self.addLevel(ans, level + 1, root.right)
-        
-
-    # def zigzagLevelOrder2(self, root):
-    #     res = []
-    #     self.dfs(root, 0, res)
-    #     for i in range(len(res)):
-    #         if i%2!=0:
-    #             res[i].reverse()
-    #         else:
-    #             continue
-    #     return res 
-
-    # def dfs(self, root, level, res):
-    #     if not root:
-    #         return 
-    #     if len(res) < level+1:
-    #         res.append([])
-    #     res[level].append(root.val)
-    #     self.dfs(root.left, level+1, res)
-    #     self.dfs(root.right, level+1, res)
-
-
-        
-
-
+            return []
+        res, level = [],  [root]
+        flag = 0
+        while level:
+            if flag % 2 == 0:
+                res.append([node.val for node in level])
+            else:
+                res.append([node.val for node in level][::-1])
+            tmp = []
+            for node in level:
+                tmp.extend([node.left, node.right])
+            level = [node for node in tmp if node]
+            flag += 1
+        return res

@@ -37,6 +37,18 @@ class Solution:
         self.func(root.right, res, level+1)
         self.func(root.left, res, level+1)
 
+    def rightSideView3(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        res, level = [], [root]
+        while level:
+            res.append([node.val for node in level][-1])
+            tmp = []
+            for node in level:
+                tmp.extend([node.left, node.right])
+            level = [node for node in tmp if node]
+        return res
+
 
 
 
