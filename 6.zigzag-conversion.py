@@ -6,18 +6,18 @@
 
 # @lc code=start
 class Solution:
-    def convert(self, s: str, numRows: int) -> str:
-        if numRows == 1 or numRows >= len(s):
+    def convert(self, s: str, n: int) -> str:
+        if n == 1 or n >= len(s):
             return s
 
-        L = [''] * numRows
+        L = [''] * n
         index, step = 0, 1
 
         for x in s:
             L[index] += x
             if index == 0:
                 step = 1
-            elif index == numRows - 1:
+            elif index == n - 1:
                 step = -1
             index += step
 
