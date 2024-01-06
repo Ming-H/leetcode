@@ -12,6 +12,8 @@ class Node:
         self.right = right
         self.next = next
 """
+
+
 class Solution:
     def connect(self, root: 'Node') -> 'Node':
         """
@@ -48,5 +50,3 @@ class Solution:
         #         cur = cur.next
         #     start = start.left
         # return root
-
-
