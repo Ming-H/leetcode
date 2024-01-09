@@ -12,32 +12,32 @@
 
 class Solution:
     def rightSideView(self, root: TreeNode) -> List[int]:
-        res = {}
-        max_depth = -1
-        stack = [(root, 0)]
-        while stack:
-            node, depth = stack.pop()
-            if node:
-                max_depth = max(max_depth, depth)
-                res.setdefault(depth, node.val)
-                stack.append((node.left, depth+1))
-                stack.append((node.right, depth+1))
-        return [res[depth] for depth in range(max_depth+1)]
+    #     res = {}
+    #     max_depth = -1
+    #     stack = [(root, 0)]
+    #     while stack:
+    #         node, depth = stack.pop()
+    #         if node:
+    #             max_depth = max(max_depth, depth)
+    #             res.setdefault(depth, node.val)
+    #             stack.append((node.left, depth+1))
+    #             stack.append((node.right, depth+1))
+    #     return [res[depth] for depth in range(max_depth+1)]
 
-    def rightSideView2(self, root):
-        res = []
-        self.func(root, res, 0)
-        return res 
+    # def rightSideView2(self, root):
+    #     res = []
+    #     self.func(root, res, 0)
+    #     return res 
 
-    def func(self, root, res, level):
-        if not root:
-            return 
-        if level == len(res):
-            res.append(root.val)
-        self.func(root.right, res, level+1)
-        self.func(root.left, res, level+1)
+    # def func(self, root, res, level):
+    #     if not root:
+    #         return 
+    #     if level == len(res):
+    #         res.append(root.val)
+    #     self.func(root.right, res, level+1)
+    #     self.func(root.left, res, level+1)
 
-    def rightSideView3(self, root: Optional[TreeNode]) -> List[int]:
+    # def rightSideView3(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
             return []
         res, level = [], [root]
