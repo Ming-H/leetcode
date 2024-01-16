@@ -9,10 +9,10 @@ class NumArray:
 
     def __init__(self, nums: List[int]):
         self.sum = []
-        sum_till = 0
-        for i in nums:
-            sum_till += i
-            self.sum.append(sum_till)
+        tmp = 0
+        for item in nums:
+            tmp += item
+            self.sum.append(tmp)
 
     def sumRange(self, left: int, right: int) -> int:
         if left > 0 and right > 0:
@@ -21,10 +21,7 @@ class NumArray:
             return self.sum[left or right]
 
 
-
-
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)
 # param_1 = obj.sumRange(left,right)
 # @lc code=end
-
