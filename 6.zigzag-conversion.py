@@ -9,18 +9,14 @@ class Solution:
     def convert(self, s: str, n: int) -> str:
         if n == 1 or n >= len(s):
             return s
-
-        L = [''] * n
+        L = ['']*n
         index, step = 0, 1
-
-        for x in s:
-            L[index] += x
+        for item in s:
+            L[index] += item
             if index == 0:
                 step = 1
-            elif index == n - 1:
+            elif index == n-1:
                 step = -1
             index += step
-
         return ''.join(L)
-
 # @lc code=end

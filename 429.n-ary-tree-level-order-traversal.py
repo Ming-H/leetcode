@@ -16,31 +16,17 @@ class Node:
 
 class Solution:
     def levelOrder(self, root: 'Node') -> List[List[int]]:
-        res = []
-
-        def dfs(root, level, res):
-            if not root:
-                return
-            if len(res) < level+1:
-                res.append([])
-            res[level].append(root.val)
-            for item in root.children:
-                dfs(item, level+1, res)
-        dfs(root, 0, res)
+        if not root:
+            return []
+        level, res = [root], []
+        while level:
+            res.append([node.val for node in level])
+            tmp = []
+            for node in level:
+                for item in node.children:
+                    tmp.append(item)
+            level = [node for node in tmp]
         return res
-
-        # if not root:
-        #     return []
-        # result = []
-        # queue = [root]
-        # while queue:
-        #     level = []
-        #     for i in range(len(queue)):
-        #         node = queue.pop(0)
-        #         level.append(node.val)
-        #         queue.extend(node.children)
-        #     result.append(level)
-        # return result
 
 
 # @lc code=end
